@@ -3,7 +3,8 @@ const { craftApi } = require('../../utils/api/new_world')
 
 module.exports = {
 	run: async (client, message, args) => {
-		name = args.join(" ");
+		let name = args.join(" ");
+		name = name.charAt(0).toUpperCase();
 		const data = await craftApi(name);
 		const { tier, ingredients, level, station } = data.craft;
 		let ingredientString = ""
