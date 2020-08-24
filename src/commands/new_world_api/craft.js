@@ -4,20 +4,21 @@ const { craftApi } = require('../../utils/api/new_world')
 module.exports = {
 	run: async (client, message, args) => {
 		let name = args.join(" ");
-		name = name.charAt(0).toUpperCase();
+		name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 		const data = await craftApi(name);
-		const { tier, ingredients, level, station } = data.craft;
-		let ingredientString = ""
-		ingredients.forEach(ingredient => {
-			ingredientString += "- " + ingredient.quantity + " " + ingredient.name + "\n"
-		});
-
-
-		const embed = {
-			"title": `${name}`,
-			"description": " ",
-			"color": 7506394,
-			"fields": [{
+		if (data) {
+			const { tier, ingredients, level, station } = data.craft;
+			let ingredientString = ""
+			ingredients.forEach(ingredient => {
+				ingredientString += "- " + ingredient.quantity + " " + ingredient.name + "\n"
+			});
+			
+			
+			const embed = {
+				"title": `${name}`,
+				"description": " ",
+				"color": 7506394,
+				"fields": [{
 					"name": "Tier",
 					"value": `${tier}`
 				},
@@ -46,7 +47,8 @@ module.exports = {
 		message.channel.send({
 			embed: embed
 		});
-	},
+	} else message.channel.send("no data found");
+},
 	name: "craft",
 	aliases: ['c'],
 	category: "new world api",

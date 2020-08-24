@@ -11,7 +11,7 @@ async function craftsApi(queryParam = "") {
     }`;
 
     try {
-        const data = await request('http://localhost:3001/api', query);
+        const data = await request('http://new-world.redbow.fr:3001/api', query);
         console.log(data);
         return data;
     } catch (err) {
@@ -38,10 +38,11 @@ async function craftApi(name) {
     }`;
 
     try {
-        const data = await request('http://localhost:3001/api', query);
+        const data = await request('http://new-world.redbow.fr:3001/api', query);
         return data;
     } catch (err) {
-        console.log(err)
+        return
+        //console.log(err)
     }
 }
 
