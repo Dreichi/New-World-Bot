@@ -3,12 +3,13 @@ const { craftApi } = require('../../utils/api/new_world')
 
 module.exports = {
 	run: async (client, message, args) => {
-		name = args.join(" ");
+		let name = args.join(" ");
+		name = name.charAt(0).toUpperCase();
 		const data = await craftApi(name);
 		const { tier, ingredients, level, station } = data.craft;
 		let ingredientString = ""
 		ingredients.forEach(ingredient => {
-			ingredientString += "- " + ingredient.name + " x" + ingredient.quantity + "\n"
+			ingredientString += "- " + ingredient.quantity + " " + ingredient.name + "\n"
 		});
 
 
@@ -39,7 +40,7 @@ module.exports = {
 				"name": "New World Bot"
 			},
 			"footer": {
-				"text": "Api by Redbow26 and Dreichi"
+				"text": "Api by Redbow26 and Louanyaa"
 			}
 		}
 		message.channel.send({

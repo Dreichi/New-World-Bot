@@ -1,14 +1,14 @@
 {
-  "name": "redbot-js",
+  "name": "New-World-Bot-js",
   "version": "0.0.5",
-  "description": "discord bot in javascript",
+  "description": "discord bot in javascript communicating with the New World API",
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js"
   },
   "repository": {},
-  "author": "Redbow",
+  "author": "Redbow and Louanyaa",
   "license": "ISC",
   "dependencies": {
     "ansi-colors": "^4.1.1",
