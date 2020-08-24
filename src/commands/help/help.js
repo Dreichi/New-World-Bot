@@ -1,6 +1,3 @@
-const { RichEmbed } = require("discord.js");
-const { stripIndents } = require("common-tags");
-
 module.exports = {
     run: async (client, message, args) => {
         const embed =  {
@@ -21,7 +18,7 @@ module.exports = {
             embed: embed
         });
     },
-    name: "",
+    name: "help",
     aliases: ['h'],
     category: "",
     description: "Help command",
