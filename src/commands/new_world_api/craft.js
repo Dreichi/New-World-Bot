@@ -8,7 +8,7 @@ module.exports = {
 		const { tier, ingredients, level, station } = data.craft;
 		let ingredientString = ""
 		ingredients.forEach(ingredient => {
-			ingredientString += "- " + ingredient.quantity + " x" + ingredient.name + "\n"
+			ingredientString += "- " + ingredient.quantity + ingredient.name + "\n"
 		});
 
 
