@@ -8,7 +8,7 @@ module.exports = {
 		const { tier, ingredients, level, station } = data.craft;
 		let ingredientString = ""
 		ingredients.forEach(ingredient => {
-			ingredientString += "- " + ingredient.name + " x" + ingredient.quantity + "\n"
+			ingredientString += "- " + ingredient.quantity + " x" + ingredient.name + "\n"
 		});
 
 
@@ -39,7 +39,7 @@ module.exports = {
 				"name": "New World Bot"
 			},
 			"footer": {
-				"text": "Api by Redbow26 and Dreichi"
+				"text": "Api by Redbow26 and Louanyaa"
 			}
 		}
 		message.channel.send({
