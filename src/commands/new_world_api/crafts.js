@@ -1,4 +1,6 @@
 const { craftsApi } = require('../../utils/api/new_world');
+const { MessageEmbed } = require('discord.js');
+const paginationEmbed = require('discord.js-pagination');
 
 module.exports = {
     run: async (client, message, args) => {
@@ -12,11 +14,44 @@ module.exports = {
         }
 
         const data = await craftsApi();
-        let dataText = "";
-        data.crafts.forEach(craft => {
-            dataText += craft.name + "\n"
-        }); 
-        message.channel.send(`${data.crafts.length} elements found :\n${dataText}`);
+        const dataCopy = [...data];
+        
+        let pages = [];
+
+        while (data.crafts.length > 10) {
+            tempArray = data.crafts.splice(0, 10);
+
+            let dataText = "";
+            tempArray.crafts.forEach(craft => {
+                dataText += "- " + craft.name + "\n"
+            });
+
+            const embed = {
+                "title": `${dataCopy.crafts.length} elements found ♥`,
+                "color": 7506394,
+                "description": `${dataText}`
+            }
+
+            pages.push(embed);
+        }
+
+        if (data.crafts.length >= 1) {
+
+            let dataText = "";
+            data.crafts.forEach(craft => {
+                dataText += "- " + craft.name + "\n"
+            });
+
+            const embedn = {
+                "title": `${dataCopy.crafts.length} elements found ♥`,
+                "color": 7506394,
+                "description": `${dataText}`
+            }
+            pages.push(embed);
+        }
+        
+        paginationEmbed(message, pages);
+        //message.channel.send(`${data.crafts.length} elements found :\n${dataText}`);//
     },
     name: "crafts",
     aliases: [],
@@ -24,4 +59,4 @@ module.exports = {
     description: "Get new world crafts, with filter",
     usage: "crafts",
     arg: false,
-} 
+}
