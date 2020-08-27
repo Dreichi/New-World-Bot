@@ -14,23 +14,23 @@ module.exports = {
         }
 
         const data = await craftsApi();
-        const dataCopy = [...data];
+        const dataCopy = [...data.crafts];
         
         let pages = [];
 
-        while (data.crafts.length > 10) {
+        while (data.crafts.length > 11) {
             tempArray = data.crafts.splice(0, 10);
 
             let dataText = "";
-            tempArray.crafts.forEach(craft => {
+            tempArray.forEach(craft => {
                 dataText += "- " + craft.name + "\n"
             });
 
-            const embed = {
-                "title": `${dataCopy.crafts.length} elements found ♥`,
-                "color": 7506394,
-                "description": `${dataText}`
-            }
+            const embed = new MessageEmbed()
+                .setTitle(`${dataCopy.length} elements found ♥`)
+                .setColor("#7289da")
+                .setDescription(dataText);
+
 
             pages.push(embed);
         }
@@ -42,11 +42,11 @@ module.exports = {
                 dataText += "- " + craft.name + "\n"
             });
 
-            const embedn = {
-                "title": `${dataCopy.crafts.length} elements found ♥`,
-                "color": 7506394,
-                "description": `${dataText}`
-            }
+            const embed = new MessageEmbed()
+                .setTitle(`${dataCopy.length} elements found ♥`)
+                .setColor("#7289da")
+                .setDescription(dataText);
+
             pages.push(embed);
         }
         
